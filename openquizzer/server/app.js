@@ -39,11 +39,13 @@ const db = require('./config/db');
 (async () => {
   try {
     const { rows } = await db.query('SELECT 1 AS ok');
-    console.log('✅ DB test query returned:', rows[0].ok); 
-  } catch (err) {
-    console.error('❌ DB connection failed!', err);
+    console.log('DB test query returned:', rows[0].ok); 
+  } 
+  catch (err) {
+    console.error('DB connection failed!', err);
     process.exit(1);                       
   }
+  
 })();
 
 
