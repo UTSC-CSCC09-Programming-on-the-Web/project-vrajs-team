@@ -3,6 +3,8 @@ const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
 require("dotenv").config();
+//creates the pool and logs 
+require('./config/db'); 
 
 const app = express();
 
@@ -31,6 +33,20 @@ io.on("connection", (socket) => {
     console.log("socket disconnected:", socket.id);
   });
 });
+
+//connecting check for db only when the app boots
+const db = require('./config/db');
+(async () => {
+  try {
+    const { rows } = await db.query('SELECT 1 AS ok');
+    console.log('✅ DB test query returned:', rows[0].ok); 
+  } catch (err) {
+    console.error('❌ DB connection failed!', err);
+    process.exit(1);                       
+  }
+})();
+
+
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
