@@ -1,0 +1,9 @@
+:host {
+  display: block;        // make the host element take full width
+  max-width: 350px;      // constrain width
+  margin: 2rem auto;     // centre
+}
+input, button {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}

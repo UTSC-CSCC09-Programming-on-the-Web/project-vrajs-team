@@ -43,7 +43,7 @@ const db = require('./config/db');
   } 
   catch (err) {
     console.error('DB connection failed!', err);
-    process.exit(1);                       
+    process.exit(1); 
   }
   
 })();
