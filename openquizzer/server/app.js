@@ -4,6 +4,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 //mounting student route
 const studentRoutes = require('./routes/student');
+const paymentRoutes = require('./routes/payment');
 require("dotenv").config();
 //creates the pool and logs 
 require('./config/db'); 
@@ -15,7 +16,12 @@ app.use(express.json());
 
 const apiRoutes = require("./routes");
 app.use("/api", apiRoutes);
+//student routes to interact with our application
 app.use('/api',studentRoutes);
+//payment routes to our app subscription
+app.use('/api', paymentRoutes);
+
+
 
 app.get("/", (req, res) => {
   res.send("OpenQuizzer backend is up and running!");
