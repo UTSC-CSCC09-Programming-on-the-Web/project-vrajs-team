@@ -5,6 +5,7 @@ const { Server } = require("socket.io");
 //mounting student route
 const studentRoutes = require('./routes/student');
 const paymentRoutes = require('./routes/payment');
+const subscriptionRoutes = require("./routes/subscription");
 require("dotenv").config();
 //creates the pool and logs 
 require('./config/db'); 
@@ -20,7 +21,8 @@ app.use("/api", apiRoutes);
 app.use('/api',studentRoutes);
 //payment routes to our app subscription
 app.use('/api', paymentRoutes);
-
+//subscription routes in  our application
+app.use('/webhook', webhookRoutes); 
 
 
 app.get("/", (req, res) => {

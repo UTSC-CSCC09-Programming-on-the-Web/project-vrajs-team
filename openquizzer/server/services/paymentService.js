@@ -1,6 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 //stripe checkout session 
-exports.startCheckout = async ({priceId,userId}) => {
+exports.startCheckout = async ({priceId,userName}) => {
   if(!priceId || typeof priceId !== 'string'){
     const error = new Error("invalid input");
     error.statusCode = 400;
@@ -15,7 +15,7 @@ exports.startCheckout = async ({priceId,userId}) => {
     success_url:`${process.env.BASE_URL}/payment-success?sessionId={CHECKOUT_SESSION_ID}`,
     //where to navigate the user on unsuccessful payments
     cancel_url: `${process.env.BASE_URL}/payment-cancel`,
-    metadata: {userId} 
+    metadata: {userName} 
   });
 
   return { sessionId: session.id };
