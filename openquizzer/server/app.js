@@ -22,7 +22,7 @@ app.use('/api',studentRoutes);
 //payment routes to our app subscription
 app.use('/api', paymentRoutes);
 //subscription routes in  our application
-app.use('/webhook', webhookRoutes); 
+app.post('/webhook', webhookRoutes); 
 
 
 app.get("/", (req, res) => {

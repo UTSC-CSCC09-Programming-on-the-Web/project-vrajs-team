@@ -12,9 +12,9 @@ exports.startCheckout = async ({priceId,userName}) => {
     //quantity is required
     line_items: [{priceId, quantity:1}],
     //where to navigate the user on successful payments
-    success_url:`${process.env.BASE_URL}/payment-success?sessionId={CHECKOUT_SESSION_ID}`,
+    success_url:`${process.env.BASE_URL}/student/join?session_id={CHECKOUT_SESSION_ID}`,
     //where to navigate the user on unsuccessful payments
-    cancel_url: `${process.env.BASE_URL}/payment-cancel`,
+    cancel_url: `${process.env.BASE_URL}/pay`,
     metadata: {userName} 
   });
 
